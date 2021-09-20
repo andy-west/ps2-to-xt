@@ -205,17 +205,18 @@ void loop()
       case PS2_KEY_CLOSE_SQ: write1(0x1B, is_brk); break;
       case PS2_KEY_BACK: write1(0x2B, is_brk); break;
       case PS2_KEY_DELETE:
-        // Handle the three-finger salute.
-        if (!is_brk && is_ctrl && is_alt)
+        if (!is_brk)
         {
-          keyboard.resetKey();
-          report_successful_self_test();
+          write4(0xE0, 0x2A, 0xE0, 0x53);
+
+          // Handle the three-finger salute.
+          if (is_ctrl && is_alt)
+          {
+            keyboard.resetKey();
+            report_successful_self_test();
+          }
         }
-        else
-        {
-          if (!is_brk) write4(0xE0, 0x2A, 0xE0, 0x53);
-          else write4(0xE0, 0xD3, 0xE0, 0xAA);
-        }
+        else write4(0xE0, 0xD3, 0xE0, 0xAA);
         break;
       case PS2_KEY_END:
         if (!is_brk) write4(0xE0, 0x2A, 0xE0, 0x4F);
