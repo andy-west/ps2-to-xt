@@ -1,8 +1,9 @@
 # ps2-to-xt
 An Arduino-based PS/2 to PC/XT keyboard adapter
 
-This code was originally based on pcxtkbd, but most of it has been rewritten:
-https://github.com/kesrut/pcxtkbd
+This code was originally based on [pcxtkbd](https://github.com/kesrut/pcxtkbd), but most of it has been rewritten.
+
+It requires the [PS2KeyAdvanced](https://github.com/techpaul/PS2KeyAdvanced) library to be installed.
 
 The program was created for and tested on a Tandy 1000 TL/2, but it should work on any system that takes an IBM PC/XT keyboard, at least in theory.
 
